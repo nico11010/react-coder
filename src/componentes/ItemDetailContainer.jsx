@@ -1,28 +1,34 @@
-import React, {useEffect, useState} from "react";
-import {getOneProduct} from '../mock/AsyncService';
-import ItemDetail from './ItemDetail';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { getOneProduct } from "../mock/AsyncService";
+import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
+import LoaderComponent from "./LoaderComponent";
 
 const ItemDetailContainer = () => {
+  const [detalle, setDetalle] = useState({});
+  const [loader, setLoader] = useState(false);
 
-    const [detalle, setDetalle] = useState({})
+  const { id } = useParams();
 
-    const {id}=useParams()
+  useEffect(() => {
+    setLoader(true);
+    getOneProduct(id)
+      .then((res) => setDetalle(res))
+      .catch((error) => console.log(error))
+      .finally(() => setLoader(false));
+  }, [id]);
 
-    useEffect(()=>{
-        getOneProduct(id)
-        .then((res)=> setDetalle(res))
-        .catch((error)=>console.log(error))
-    },[id])
-
-    return (
-
+  return (
+    <>
+      {loader ? (
+        <LoaderComponent />
+      ) : (
         <div>
-            <ItemDetail detalle={detalle}/>
+          <ItemDetail detalle={detalle} />
         </div>
-
-    );
-
-}
+      )}
+    </>
+  );
+};
 
 export default ItemDetailContainer;
