@@ -4,16 +4,18 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 const CartWidget = () => {
-  const { cart } = useContext(CartContext);
+  const { cartQuantity, cart } = useContext(CartContext);
 
   console.log("carrito", cart);
 
   return (
     <>
       <CiShoppingCart color="white" size={32} />
-      <Badge bg="light" text="dark">
-        5
-      </Badge>
+      {cart.lenght > 0 && (
+        <Badge bg="light" text="dark">
+          {cartQuantity()}
+        </Badge>
+      )}
     </>
   );
 };
