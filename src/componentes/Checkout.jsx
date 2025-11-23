@@ -100,9 +100,9 @@ const Checkout = () => {
             <input
               className="form-control"
               name="secondmail"
-              type="text"
+              type="email"
               placeholder="Repita el Mail"
-              onClick={(e) => setSecondmail(e.target.value)}
+              onChange={(e) => setSecondmail(e.target.value)}
             />
             <button type="submit" className="btn btn-success">
               Finalizar Compra
