@@ -28,7 +28,7 @@ function App() {
             <Route
               path="/"
               element={
-                <ItemListContainer saludo="Bienvenido a Van Houtte Cafe!" />
+                <ItemListContainer saludo="Bienvenido a Van Houtte Cafe! ☕🔥" />
               }
             />
             <Route path="/category/:type" element={<ItemListContainer />} />
