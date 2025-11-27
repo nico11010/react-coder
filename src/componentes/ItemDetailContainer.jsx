@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-//import { getOneProduct } from "../mock/AsyncService";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import LoaderComponent from "./LoaderComponent";
@@ -28,14 +27,6 @@ const ItemDetailContainer = () => {
       .catch((error) => console.log(error))
       .finally(() => setLoader(false));
   }, [id]);
-
-  // useEffect(() => {
-  //   setLoader(true);
-  //   getOneProduct(id)
-  //     .then((res) => setDetalle(res))
-  //     .catch((error) => console.log(error))
-  //     .finally(() => setLoader(false));
-  // }, [id]);
 
   if (invalid) {
     return (

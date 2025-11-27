@@ -1,20 +1,22 @@
 import React from "react";
 import Item from "./Item";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import Grid from "@mui/joy/Grid";
 
 const ItemList = ({ data }) => {
   return (
-    <Container className="mt-4">
-      <Row className="g-4">
-        {" "}
-        {data.map((prod) => (
-          <Col key={prod.id} xs={12} sm={6} md={4} lg={3}>
-            <Item prod={prod} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <Grid
+      container
+      spacing={{ xs: 2, md: 3 }}
+      columns={{ xs: 4, sm: 8, md: 12 }}
+      justifyContent="center"
+      sx={{ flexGrow: 1 }}
+    >
+      {data.map((prod) => (
+        <Grid key={prod.id} size={{ xs: 4, sm: 4, md: 3 }}>
+          <Item prod={prod} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 

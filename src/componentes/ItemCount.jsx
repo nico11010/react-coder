@@ -1,20 +1,23 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ItemCount = ({ stock, onAdd }) => {
+const ItemCount = ({ stock, onChangeCount }) => {
   const [count, setCount] = useState(1);
 
   const sumar = () => {
     if (count < stock) {
-      setCount(count + 1);
+      const nuevo = count + 1;
+      setCount(nuevo);
+      onChangeCount(nuevo);
     }
   };
-  const restar = () => {
-    setCount(count - 1);
-  };
 
-  const ejecutarCompra = () => {
-    onAdd(count);
+  const restar = () => {
+    if (count > 1) {
+      const nuevo = count - 1;
+      setCount(nuevo);
+      onChangeCount(nuevo);
+    }
   };
 
   return (
@@ -32,13 +35,6 @@ const ItemCount = ({ stock, onAdd }) => {
           +
         </button>
       </div>
-      <button
-        className="btn btn-dark"
-        onClick={ejecutarCompra}
-        disabled={count === 0 || stock === 0}
-      >
-        Agregar al Carrito
-      </button>
     </>
   );
 };

@@ -12,7 +12,9 @@ const LoaderComponent = () => {
         alignItems: "center",
       }}
     >
-      <Spinner animation="grow" variant="dark" />
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
     </div>
   );
 };
