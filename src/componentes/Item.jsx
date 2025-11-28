@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "../item.css";
+import "../Item.css";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
